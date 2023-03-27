@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3984326479565279612}
   - component: {fileID: 603875240120261007}
   m_Layer: 0
-  m_Name: Apple_G Completee
+  m_Name: Apple_G Complete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,9 +70,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0009544635, y: -0.21325374}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75507927
 --- !u!114 &-3984326479565279612
 MonoBehaviour:
   m_ObjectHideFlags: 0
