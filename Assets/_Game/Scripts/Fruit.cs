@@ -6,6 +6,8 @@ public class Fruit : MonoBehaviour
 {
     private Rigidbody2D myRB;
 
+    public GameObject SlicedFruit;
+
     [SerializeField] private float startForce;
     // Start is called before the first frame update
     void Start()

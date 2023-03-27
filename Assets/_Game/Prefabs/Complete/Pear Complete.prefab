@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7982000344688788209}
   - component: {fileID: 7982000344688788208}
   - component: {fileID: -4885142119558807167}
+  - component: {fileID: 7297452233001704189}
   m_Layer: 0
   m_Name: Pear Complete
   m_TagString: Untagged
@@ -84,7 +85,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b073f8d0722104197fb284d0efc69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlicedFruit: {fileID: 5994411566879526903, guid: 4548067beb274064c84e010d2543cdf8, type: 3}
   startForce: 12
+--- !u!114 &7297452233001704189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7982000344688788211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571eeb745b5239548b859008b2e24124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7982000344944219205
 PrefabInstance:
   m_ObjectHideFlags: 0
