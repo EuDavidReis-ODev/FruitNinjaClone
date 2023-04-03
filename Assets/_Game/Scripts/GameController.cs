@@ -11,10 +11,12 @@ public class GameController : MonoBehaviour
     [HideInInspector] public Color32 coconutColor = new Color32(134,87,56,255);
     [HideInInspector] public Color32 pineappleColor = new Color32(202,111,26,255);
     [HideInInspector] public Color32 orangeColor = new Color32(253,122,10,255);
+    [HideInInspector] public Color32 redColor = new Color32(253,0,0,255);
     
     private UIController uIController;
 
-    [HideInInspector] public int score;
+    [HideInInspector] public int score,fruitsCount;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame(){
         score = 0;
+        fruitsCount = 0;
         uIController.txtScore.text = "Score: "+ score.ToString();
     }
 

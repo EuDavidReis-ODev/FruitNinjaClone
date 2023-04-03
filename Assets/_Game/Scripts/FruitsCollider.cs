@@ -7,12 +7,14 @@ public class FruitsCollider : MonoBehaviour
     private Fruit fruit;
     private GameController gameController;
 
+    private UIController uIController;
+
     // Start is called before the first frame update
     void Start()
     {
         fruit = this.gameObject.GetComponent<Fruit>();
         gameController = FindObjectOfType<GameController>();
-
+        uIController = FindObjectOfType<UIController>();
     }
 
     // Update is called once per frame
@@ -34,6 +36,13 @@ public class FruitsCollider : MonoBehaviour
             Destroy(tempFruitSliced,5f);
             Destroy(this.gameObject);
 
+        }
+        else if(target.gameObject.CompareTag("Destroyer")){
+            gameController.fruitsCount++;
+            uIController.imgLifes[gameController.fruitsCount-1].color = gameController.redColor;
+            if(gameController.fruitsCount >= 3){
+                Debug.Log("Game Over!");
+            }
         }
     }
 }
