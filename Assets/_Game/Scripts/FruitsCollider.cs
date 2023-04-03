@@ -25,12 +25,15 @@ public class FruitsCollider : MonoBehaviour
         if(target.gameObject.CompareTag("Blade")){
             GameObject tempFruitSliced = Instantiate(fruit.SlicedFruit, transform.position, Quaternion.identity);
             GameObject tempSplash = Instantiate(gameController.splash,transform.position, Quaternion.identity);
+
+            gameController.updateScore(this.gameObject.GetComponent<Fruit>().points);
+
             tempSplash.GetComponentInChildren<SpriteRenderer>().color = fruit.changeSplashColor(this.gameObject);
-            tempFruitSliced.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().AddForce(-tempFruitSliced.transform.GetChild(0).transform.right * Random.Range(5f,9f));
-            tempFruitSliced.transform.GetChild(1).gameObject.GetComponent<Rigidbody>().AddForce(tempFruitSliced.transform.GetChild(1).transform.right * Random.Range(5f,9f));
+            tempFruitSliced.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().AddForce(-tempFruitSliced.transform.GetChild(0).transform.right * Random.Range(5f,8f),ForceMode.Impulse);
+            tempFruitSliced.transform.GetChild(1).gameObject.GetComponent<Rigidbody>().AddForce(tempFruitSliced.transform.GetChild(1).transform.right * Random.Range(5f,8f),ForceMode.Impulse);
+            Destroy(tempFruitSliced,5f);
             Destroy(this.gameObject);
 
-            Destroy(tempFruitSliced,5f);
         }
     }
 }

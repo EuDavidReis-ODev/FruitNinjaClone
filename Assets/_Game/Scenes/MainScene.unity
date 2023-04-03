@@ -1134,6 +1134,7 @@ MonoBehaviour:
   orangeColor:
     serializedVersion: 2
     rgba: 4278876925
+  score: 0
 --- !u!1 &882536584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,6 +1591,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1202319010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1202319012}
+  - component: {fileID: 1202319011}
+  m_Layer: 0
+  m_Name: UIController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1202319011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202319010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c2d2cadddfe0648a0517b8dd219900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtScore: {fileID: 0}
+  txtHighScore: {fileID: 0}
+  imgLifes: []
+  btPause: {fileID: 1224806103}
+  btResume: {fileID: 1513798124}
+  btMainMenu: {fileID: 689774790}
+  btClosePauseMenu: {fileID: 1593527449}
+  btSound: {fileID: 2112315025}
+  panelPause: {fileID: 951988440}
+  panelGame: {fileID: 67795706}
+--- !u!4 &1202319012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202319010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 613.39825, y: 190.67053, z: -4.375016}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205612678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,7 +1811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1224806104}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1202319011}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: ButtonPauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1224806104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,7 +2145,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1513798125}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1202319011}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: ButtonOnPauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1513798125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2426,7 +2505,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1593527450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1202319011}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: ButtonOnPauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1593527450
 MonoBehaviour:
   m_ObjectHideFlags: 0

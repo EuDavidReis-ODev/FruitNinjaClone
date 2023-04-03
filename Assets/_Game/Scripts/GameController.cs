@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         uIController = FindAnyObjectByType<UIController>();
-        score = 0;
+        StartGame();
     }
 
     // Update is called once per frame
@@ -30,6 +30,12 @@ public class GameController : MonoBehaviour
     }
 
     public void StartGame(){
-        uIController.txtScore.text = "Score: "+ score;
+        score = 0;
+        uIController.txtScore.text = "Score: "+ score.ToString();
+    }
+
+    public void updateScore(int points){
+        score += points;
+        uIController.txtScore.text = "Score: "+score.ToString();
     }
 }
