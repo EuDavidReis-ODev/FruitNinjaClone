@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Blade
+  - Destroyer
+  - Bomb
   layers:
   - Default
   - TransparentFX

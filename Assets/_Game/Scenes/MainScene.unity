@@ -544,7 +544,7 @@ RectTransform:
   m_Children:
   - {fileID: 1301965975}
   m_Father: {fileID: 1479502663}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -832,7 +832,7 @@ RectTransform:
   m_Children:
   - {fileID: 1600874391}
   m_Father: {fileID: 1479502663}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1134,7 +1134,11 @@ MonoBehaviour:
   orangeColor:
     serializedVersion: 2
     rgba: 4278876925
+  redColor:
+    serializedVersion: 2
+    rgba: 4278190333
   score: 0
+  fruitsCount: 0
 --- !u!1 &882536584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1171,7 @@ RectTransform:
   m_Children:
   - {fileID: 1205612679}
   m_Father: {fileID: 1479502663}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1353,7 +1357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Placar: 1000000000'
+  m_text: 'Placar: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1387,7 +1391,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1462,7 +1466,7 @@ RectTransform:
   m_Children:
   - {fileID: 4037770}
   m_Father: {fileID: 1479502663}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1620,9 +1624,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09c2d2cadddfe0648a0517b8dd219900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txtScore: {fileID: 0}
-  txtHighScore: {fileID: 0}
-  imgLifes: []
+  txtScore: {fileID: 1084585650}
+  txtHighScore: {fileID: 1717252863}
+  imgLifes:
+  - {fileID: 509459722}
+  - {fileID: 1133492408}
+  - {fileID: 882536586}
+  - {fileID: 370847103}
   btPause: {fileID: 1224806103}
   btResume: {fileID: 1513798124}
   btMainMenu: {fileID: 689774790}
@@ -1946,6 +1954,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1304943159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1304943161}
+  - component: {fileID: 1304943160}
+  m_Layer: 0
+  m_Name: Destroyer
+  m_TagString: Destroyer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1304943160
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304943159}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 40, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &1304943161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304943159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1367427915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,10 +2116,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 370847102}
   - {fileID: 882536585}
   - {fileID: 1133492407}
   - {fileID: 509459721}
-  - {fileID: 370847102}
   m_Father: {fileID: 67795707}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2236,7 +2302,7 @@ MonoBehaviour:
   - {fileID: 98220613}
   - {fileID: 39259519}
   minDelay: 0.1
-  maxDelay: 2
+  maxDelay: 5
 --- !u!4 &1552106142
 Transform:
   m_ObjectHideFlags: 0
@@ -2698,7 +2764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Recorde: 1000000000'
+  m_text: 'Recorde: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
