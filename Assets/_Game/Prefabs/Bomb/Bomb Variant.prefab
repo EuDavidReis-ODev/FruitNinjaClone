@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2d9bef6ebcc2f994aa29b0c0e93f7d47, type: 2}
     - target: {fileID: 919132149155446097, guid: bcd3b33fc42dc8340b886e92c82ea270, type: 3}
       propertyPath: m_Name
-      value: Bomb
+      value: Bomb Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bcd3b33fc42dc8340b886e92c82ea270, type: 3}
       propertyPath: m_TagString
@@ -185,4 +185,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fd4aafecb5b884e8bcc4bbbfe7ba23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beanLight: {fileID: 6885344127483319942, guid: 1fd4c28efc73c634389cdb9d701b53a8, type: 3}
   speed: 150
+  startForce: 12
+--- !u!114 &7749606459185217935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703987039738907721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb76ddd77dffbf8419077cf5dcaaf6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
