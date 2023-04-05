@@ -12,16 +12,20 @@ public class GameController : MonoBehaviour
     [HideInInspector] public Color32 pineappleColor = new Color32(202,111,26,255);
     [HideInInspector] public Color32 orangeColor = new Color32(253,122,10,255);
     [HideInInspector] public Color32 redColor = new Color32(253,0,0,255);
-    
+    [HideInInspector] public Color32 whiteColor = new Color32(253,225,225,255);
+
     private UIController uIController;
 
     [HideInInspector] public int score,fruitsCount;
+
+    [SerializeField] private GameObject fruitSpawner,blade,destroyer;
 
 
     // Start is called before the first frame update
     void Start()
     {
         uIController = FindAnyObjectByType<UIController>();
+
         StartGame();
     }
 
@@ -40,5 +44,23 @@ public class GameController : MonoBehaviour
     public void updateScore(int points){
         score += points;
         uIController.txtScore.text = "Score: "+score.ToString();
+    }
+
+    public void GameOver(){
+        fruitSpawner.gameObject.SetActive(false);
+        blade.gameObject.SetActive(false);
+        destroyer.gameObject.SetActive(false);
+
+    }
+
+    public void RestartGame(){
+        fruitSpawner.gameObject.SetActive(true);
+        blade.gameObject.SetActive(true);
+        destroyer.gameObject.SetActive(true);
+        score = 0;
+        fruitsCount = 0;
+        uIController.txtScore.text = "Score: "+score.ToString();
+
+
     }
 }

@@ -11,7 +11,10 @@ public class UIController : MonoBehaviour
     public Image[] imgLifes;
     public Button btPause,btResume,btMainMenu,btClosePauseMenu,btSound;
 
-    public GameObject panelPause, panelGame;
+    public GameObject panelPause, panelGame, panelGameOver;
+
+    private GameController gameController;
+
 
 
     // Start is called before the first frame update
@@ -19,6 +22,9 @@ public class UIController : MonoBehaviour
     {
         panelGame.gameObject.SetActive(true);
         panelPause.gameObject.SetActive(false);
+        panelGameOver.gameObject.SetActive(false);
+        gameController = FindObjectOfType<GameController>();
+
     }
 
     // Update is called once per frame
@@ -38,4 +44,31 @@ public class UIController : MonoBehaviour
         panelPause.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
+
+    public void showPanelGameOver(){
+        panelGameOver.gameObject.SetActive(true);
+        panelGame.gameObject.SetActive(false);
+
+        gameController.GameOver();
+    }
+
+    public IEnumerator showBombPanelGameOver(){
+        gameController.GameOver();
+        panelGame.gameObject.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        panelGameOver.gameObject.SetActive(true);
+
+    }
+
+    public void ButtonRestart(){
+        panelGame.gameObject.SetActive(true);
+        panelGameOver.gameObject.SetActive(false);
+        panelPause.gameObject.SetActive(false);
+
+        for(int i = 0;i<imgLifes.Length;i++){
+            imgLifes[i].color = gameController.whiteColor;
+        }
+        gameController.RestartGame();
+    }
+
 }

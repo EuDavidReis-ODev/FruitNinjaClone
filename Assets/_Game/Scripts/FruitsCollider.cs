@@ -34,6 +34,7 @@ public class FruitsCollider : MonoBehaviour
             tempFruitSliced.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().AddForce(-tempFruitSliced.transform.GetChild(0).transform.right * Random.Range(5f,8f),ForceMode.Impulse);
             tempFruitSliced.transform.GetChild(1).gameObject.GetComponent<Rigidbody>().AddForce(tempFruitSliced.transform.GetChild(1).transform.right * Random.Range(5f,8f),ForceMode.Impulse);
             Destroy(tempFruitSliced,5f);
+            Destroy(tempSplash,6f);
             Destroy(this.gameObject);
 
         }
@@ -41,7 +42,7 @@ public class FruitsCollider : MonoBehaviour
             gameController.fruitsCount++;
             uIController.imgLifes[gameController.fruitsCount-1].color = gameController.redColor;
             if(gameController.fruitsCount >= 3){
-                Debug.Log("Game Over!");
+                uIController.showPanelGameOver();
             }
         }
     }
