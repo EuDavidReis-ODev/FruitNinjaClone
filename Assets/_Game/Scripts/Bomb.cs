@@ -9,11 +9,15 @@ public class Bomb : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private AudioController audioController;
+
     
     // Start is called before the first frame update
     void Start()
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
+        audioController = FindObjectOfType<AudioController>();
+
         ApplyForce();
     }
 
@@ -39,6 +43,7 @@ public class Bomb : MonoBehaviour
         CircleCollider2D collider = this.gameObject.GetComponent<CircleCollider2D>();
         collider.enabled = false;
         GameObject tempBeanLight = Instantiate(beanLight, this.transform.position, Quaternion.identity) as GameObject;
-
+        this.gameObject.GetComponent<AudioSource>().clip = audioController.bombExplodeAudio;
+        this.gameObject.GetComponent<AudioSource>().Play();
     }
 }
