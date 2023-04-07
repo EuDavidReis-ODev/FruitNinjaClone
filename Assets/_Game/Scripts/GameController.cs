@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+
+    private int highscore;
+    private GameData gameData;
     public GameObject splash;
 
     [HideInInspector] public Color32 pearColor = new Color32(174,185,0,255);
@@ -25,7 +28,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         uIController = FindAnyObjectByType<UIController>();
-
+        gameData = FindAnyObjectByType<GameData>();
+        highscore = gameData.GetScore();
         StartGame();
     }
 
@@ -51,6 +55,9 @@ public class GameController : MonoBehaviour
         blade.gameObject.SetActive(false);
         destroyer.gameObject.SetActive(false);
 
+        if(score > highscore){
+            gameData.SaveScore(score);
+        }
     }
 
     public void RestartGame(){

@@ -16,7 +16,7 @@ public class UIController : MonoBehaviour
     private GameController gameController;
 
 
-
+    private GameData gameData;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,9 @@ public class UIController : MonoBehaviour
         panelPause.gameObject.SetActive(false);
         panelGameOver.gameObject.SetActive(false);
         gameController = FindObjectOfType<GameController>();
+        gameData = FindAnyObjectByType<GameData>();
 
+        txtHighScore.text = "Recorde: "+gameData.GetScore().ToString();
     }
 
     // Update is called once per frame
@@ -48,6 +50,7 @@ public class UIController : MonoBehaviour
     public void showPanelGameOver(){
         panelGameOver.gameObject.SetActive(true);
         panelGame.gameObject.SetActive(false);
+        txtHighScore.text = "Recorde: "+gameData.GetScore().ToString();
 
         gameController.GameOver();
     }
@@ -57,6 +60,8 @@ public class UIController : MonoBehaviour
         panelGame.gameObject.SetActive(false);
         yield return new WaitForSeconds(3f);
         panelGameOver.gameObject.SetActive(true);
+        txtHighScore.text = "Recorde: "+gameData.GetScore().ToString();
+
 
     }
 
