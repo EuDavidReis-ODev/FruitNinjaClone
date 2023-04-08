@@ -31,12 +31,13 @@ public class FruitsCollider : MonoBehaviour
             target.gameObject.GetComponent<AudioSource>().clip = audioController.bladeAudio[Random.Range(0,audioController.bladeAudio.Length)];
             target.gameObject.GetComponent<AudioSource>().Play();
             GameObject tempFruitSliced = Instantiate(fruit.SlicedFruit, transform.position, Quaternion.identity);
-            GameObject tempSplash = Instantiate(gameController.splash,transform.position, Quaternion.identity);
+            GameObject tempSplash = Instantiate(gameController.splash, new Vector3(tempFruitSliced.transform.position.x,tempFruitSliced.transform.position.y,10f), Quaternion.identity);
 
             gameController.updateScore(this.gameObject.GetComponent<Fruit>().points);
 
             tempFruitSliced.transform.parent = gameController.allSlicedFruits;
             tempSplash.GetComponentInChildren<SpriteRenderer>().color = fruit.changeSplashColor(this.gameObject);
+            
             tempSplash.transform.parent = gameController.allSplashs;
             tempFruitSliced.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().AddForce(-tempFruitSliced.transform.GetChild(0).transform.right * Random.Range(5f,8f),ForceMode.Impulse);
             tempFruitSliced.transform.GetChild(1).gameObject.GetComponent<Rigidbody>().AddForce(tempFruitSliced.transform.GetChild(1).transform.right * Random.Range(5f,8f),ForceMode.Impulse);

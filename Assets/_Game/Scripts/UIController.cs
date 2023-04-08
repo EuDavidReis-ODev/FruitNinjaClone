@@ -6,12 +6,12 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
 
-    public TMP_Text txtScore,txtHighScore;
+    public TMP_Text txtScore,txtHighScore,txtHighScoreGameOVer,txtHighScoreMainMenu;
 
     public Image[] imgLifes;
-    public Button btPause,btResume,btMainMenu,btClosePauseMenu,btSound;
+    public Button btPause,btResume,btMainMenu,btClosePauseMenu,btSound,btSoundMainMenu;
 
-    public GameObject panelPause, panelGame, panelGameOver;
+    public GameObject panelPause, panelGame, panelGameOver, panelMainMenu;
 
     private GameController gameController;
 
@@ -23,13 +23,16 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        panelGame.gameObject.SetActive(true);
+        panelGame.gameObject.SetActive(false);
         panelPause.gameObject.SetActive(false);
         panelGameOver.gameObject.SetActive(false);
+        panelMainMenu.gameObject.SetActive(true);
         gameController = FindObjectOfType<GameController>();
         gameData = FindObjectOfType<GameData>();
         audioController = FindObjectOfType<AudioController>();
         txtHighScore.text = "Recorde: "+gameData.GetScore().ToString();
+        txtHighScoreMainMenu.text = "Recorde: "+gameData.GetScore().ToString();
+
     }
 
     // Update is called once per frame
@@ -55,40 +58,43 @@ public class UIController : MonoBehaviour
         panelGameOver.gameObject.SetActive(true);
         panelGame.gameObject.SetActive(false);
         txtHighScore.text = "Recorde: "+gameData.GetScore().ToString();
+        txtHighScoreGameOVer.text = "Recorde: "+gameData.GetScore().ToString();
 
         gameController.GameOver();
     }
 
-    public IEnumerator showBombPanelGameOver(){
+    public void showBombPanelGameOver(){
         gameController.GameOver();
         panelGame.gameObject.SetActive(false);
-        yield return new WaitForSeconds(3f);
         panelGameOver.gameObject.SetActive(true);
         txtHighScore.text = "Recorde: "+gameData.GetScore().ToString();
-
-
+        txtHighScoreGameOVer.text = "Recorde: "+gameData.GetScore().ToString();
     }
 
     public void ButtonRestart(){
         panelGame.gameObject.SetActive(true);
         panelGameOver.gameObject.SetActive(false);
         panelPause.gameObject.SetActive(false);
+        gameController.RestartGame();
+        txtScore.text = "Score: "+gameController.score.ToString();
 
         for(int i = 0;i<imgLifes.Length;i++){
             imgLifes[i].color = gameController.whiteColor;
         }
-        gameController.RestartGame();
     }
 
     public void ButtonSounds(){
         if(gameController.soundOnOff){
             gameController.soundOnOff = false;
             btSound.gameObject.GetComponent<Image>().sprite = spriteSoundOff;
+            btSoundMainMenu.gameObject.GetComponent<Image>().sprite = spriteSoundOff;
 
             
         }else{
             gameController.soundOnOff = true;
             btSound.gameObject.GetComponent<Image>().sprite = spriteSoundOn;
+            btSoundMainMenu.gameObject.GetComponent<Image>().sprite = spriteSoundOn;
+
         }
 
         audioController.EnableDisableSounds();
@@ -100,6 +106,32 @@ public class UIController : MonoBehaviour
         }else{
             btSound.gameObject.GetComponent<Image>().sprite = spriteSoundOn;
         }
+    }
+
+    public void ButtonBackMainMenu(){
+        panelGame.gameObject.SetActive(false);
+        panelPause.gameObject.SetActive(false);
+        panelGameOver.gameObject.SetActive(false);
+        panelMainMenu.gameObject.SetActive(true);
+        txtHighScoreMainMenu.text = "Recorde: "+gameData.GetScore().ToString();
+
+        
+        for(int i = 0;i<imgLifes.Length;i++){
+            imgLifes[i].color = gameController.whiteColor;
+        }
+        gameController.BackMainMenu();
+    }
+
+    public void ButtonStartGame(){
+        panelMainMenu.gameObject.SetActive(false);
+        panelGame.gameObject.SetActive(true);
+        gameController.StartGame();
+        txtScore.text = "Score: "+gameController.score.ToString();
+    }
+
+    public void ButtonCloseGame(){
+        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+        activity.Call<bool>("moveTaskToBack",true);
     }
 
 }

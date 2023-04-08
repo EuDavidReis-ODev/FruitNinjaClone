@@ -10,11 +10,10 @@ public class FruitSpawner : MonoBehaviour
 
     private GameController gameController;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public Coroutine spawnCoroutine;
+
+    private void Awake() {
         gameController = FindAnyObjectByType<GameController>();
-        StartCoroutine(Spawn());
     }
 
     // Update is called once per frame
@@ -23,9 +22,9 @@ public class FruitSpawner : MonoBehaviour
         
     }
 
-    private IEnumerator Spawn(){
+    public IEnumerator Spawn(){
 
-        while(true){
+        while(gameController.gameStart){
             float delay = Random.Range(minDelay,maxDelay);
             yield return new WaitForSeconds(delay);
 

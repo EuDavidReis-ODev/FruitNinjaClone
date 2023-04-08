@@ -7,6 +7,8 @@ public class Bomb : MonoBehaviour
     [SerializeField] private GameObject beanLight;
     [SerializeField] private float speed,startForce;
 
+    private GameController gameController;
+
     private Rigidbody2D rb;
 
     private AudioController audioController;
@@ -17,7 +19,7 @@ public class Bomb : MonoBehaviour
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         audioController = FindObjectOfType<AudioController>();
-
+        gameController = FindObjectOfType<GameController>();
         ApplyForce();
     }
 
@@ -43,6 +45,7 @@ public class Bomb : MonoBehaviour
         CircleCollider2D collider = this.gameObject.GetComponent<CircleCollider2D>();
         collider.enabled = false;
         GameObject tempBeanLight = Instantiate(beanLight, this.transform.position, Quaternion.identity) as GameObject;
+        tempBeanLight.transform.parent = gameController.allLightBeans;
         this.gameObject.GetComponent<AudioSource>().clip = audioController.bombExplodeAudio;
         this.gameObject.GetComponent<AudioSource>().Play();
     }
