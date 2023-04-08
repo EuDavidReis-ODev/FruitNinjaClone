@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     private GameData gameData;
     public GameObject splash;
 
+    public bool soundOnOff;
+
     [HideInInspector] public Color32 pearColor = new Color32(174,185,0,255);
     [HideInInspector] public Color32 appleColor = new Color32(115,143,11,255);
     [HideInInspector] public Color32 coconutColor = new Color32(134,87,56,255);
@@ -23,6 +25,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private GameObject fruitSpawner,blade,destroyer;
 
+    public Transform allObjects,allSplashs,allSlicedFruits;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +34,27 @@ public class GameController : MonoBehaviour
         gameData = FindAnyObjectByType<GameData>();
         highscore = gameData.GetScore();
         StartGame();
+        Initialize();
+        SoundsData();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void Initialize(){
+        int soundValue = gameData.GetSounds();
+        if(soundValue == 1){
+            soundOnOff = true;
+            uIController.btSound.gameObject.GetComponent<UnityEngine.UI.Image>().sprite = uIController.spriteSoundOn;
+
+        }else {
+            soundOnOff = false;
+            uIController.btSound.gameObject.GetComponent<UnityEngine.UI.Image>().sprite = uIController.spriteSoundOff;
+
+        }
     }
 
     public void StartGame(){
@@ -69,5 +87,15 @@ public class GameController : MonoBehaviour
         uIController.txtScore.text = "Score: "+score.ToString();
 
 
+    }
+
+    public void SoundsData(){
+        if(soundOnOff){
+            gameData.SaveSounds(1);
+            soundOnOff = true;
+        }else{
+            gameData.SaveSounds(0);
+            soundOnOff = false;
+        }
     }
 }

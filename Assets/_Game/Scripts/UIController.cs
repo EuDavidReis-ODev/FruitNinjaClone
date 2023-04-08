@@ -15,8 +15,11 @@ public class UIController : MonoBehaviour
 
     private GameController gameController;
 
+    public Sprite spriteSoundOn,spriteSoundOff;
 
     private GameData gameData;
+
+    private AudioController audioController;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +27,8 @@ public class UIController : MonoBehaviour
         panelPause.gameObject.SetActive(false);
         panelGameOver.gameObject.SetActive(false);
         gameController = FindObjectOfType<GameController>();
-        gameData = FindAnyObjectByType<GameData>();
-
+        gameData = FindObjectOfType<GameData>();
+        audioController = FindObjectOfType<AudioController>();
         txtHighScore.text = "Recorde: "+gameData.GetScore().ToString();
     }
 
@@ -45,6 +48,7 @@ public class UIController : MonoBehaviour
         panelGame.gameObject.SetActive(true);
         panelPause.gameObject.SetActive(false);
         Time.timeScale = 1f;
+        gameController.SoundsData();
     }
 
     public void showPanelGameOver(){
@@ -74,6 +78,28 @@ public class UIController : MonoBehaviour
             imgLifes[i].color = gameController.whiteColor;
         }
         gameController.RestartGame();
+    }
+
+    public void ButtonSounds(){
+        if(gameController.soundOnOff){
+            gameController.soundOnOff = false;
+            btSound.gameObject.GetComponent<Image>().sprite = spriteSoundOff;
+
+            
+        }else{
+            gameController.soundOnOff = true;
+            btSound.gameObject.GetComponent<Image>().sprite = spriteSoundOn;
+        }
+
+        audioController.EnableDisableSounds();
+    }
+
+
+    public void InitializeSoundConfig(){
+        if(gameController.soundOnOff){
+        }else{
+            btSound.gameObject.GetComponent<Image>().sprite = spriteSoundOn;
+        }
     }
 
 }

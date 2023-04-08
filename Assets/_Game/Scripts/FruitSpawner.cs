@@ -8,10 +8,12 @@ public class FruitSpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private float minDelay, maxDelay;
 
+    private GameController gameController;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameController = FindAnyObjectByType<GameController>();
         StartCoroutine(Spawn());
     }
 
@@ -31,6 +33,7 @@ public class FruitSpawner : MonoBehaviour
             Transform spawnPoint = spawnPoints[spawnIndex];
 
             GameObject fruitPrefab = Instantiate(fruitsPrefabs[Random.Range(0, fruitsPrefabs.Length)],spawnPoint.position, spawnPoint.rotation);
+            fruitPrefab.transform.parent = gameController.allObjects;
             spawnPoint.gameObject.GetComponent<AudioSource>().Play();
             Destroy(fruitPrefab,5f);
         }

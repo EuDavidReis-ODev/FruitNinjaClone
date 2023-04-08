@@ -44,3 +44,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3945756319
+    locked: 0
+  - name: Splash
+    uniqueID: 1994435727
+    locked: 0
+  - name: Lightbean
+    uniqueID: 171184165
+    locked: 0
+  - name: Blade
+    uniqueID: 2201849427
+    locked: 0
