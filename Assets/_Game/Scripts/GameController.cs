@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
         fruitSpawnerScript = FindAnyObjectByType<FruitSpawner>();
         highscore = gameData.GetScore();
         gameStart = false;
-        StartGame();
+
         Initialize();
         SoundsData();
     }
@@ -101,11 +101,12 @@ public class GameController : MonoBehaviour
         fruitsCount = 0;
         fruitSpawnerScript = FindObjectOfType<FruitSpawner>();
         fruitSpawnerScript.spawnCoroutine = StartCoroutine(fruitSpawnerScript.Spawn());
-
         foreach (Transform child in allLightBeans)
         {
             Destroy(child.gameObject);
         }
+        Time.timeScale = 1f;
+
     }
 
     public void SoundsData(){

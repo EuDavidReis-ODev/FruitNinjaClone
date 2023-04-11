@@ -75,6 +75,7 @@ public class UIController : MonoBehaviour
         panelGame.gameObject.SetActive(true);
         panelGameOver.gameObject.SetActive(false);
         panelPause.gameObject.SetActive(false);
+        panelMainMenu.gameObject.SetActive(false);
         gameController.RestartGame();
         txtScore.text = "Score: "+gameController.score.ToString();
 
@@ -125,7 +126,7 @@ public class UIController : MonoBehaviour
     public void ButtonStartGame(){
         panelMainMenu.gameObject.SetActive(false);
         panelGame.gameObject.SetActive(true);
-        gameController.StartGame();
+        gameController.RestartGame();
         txtScore.text = "Score: "+gameController.score.ToString();
     }
 
